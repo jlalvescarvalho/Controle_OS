@@ -1,0 +1,25 @@
+unit view.empresa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TfrmEmpresa = class(TForm)
+    btNovaEmpresa: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmEmpresa: TfrmEmpresa;
+
+implementation
+
+{$R *.dfm}
+
+end.

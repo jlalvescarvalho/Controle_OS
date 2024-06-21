@@ -1,0 +1,27 @@
+unit view.CadastrarEmpresa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TfrmCadastrarEmpresa = class(TForm)
+    Label1: TLabel;
+    edtNome: TEdit;
+    btCadastrarEmpresa: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadastrarEmpresa: TfrmCadastrarEmpresa;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,51 @@
+unit view.imagens;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  TfrmImagens = class(TForm)
+    img1: TImage;
+    img2: TImage;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    var
+      id : string;
+  end;
+
+var
+  frmImagens: TfrmImagens;
+
+implementation
+
+{$R *.dfm}
+
+uses modulo;
+
+procedure TfrmImagens.FormShow(Sender: TObject);
+begin
+  moduloConn.qrTemp.Close;
+  moduloConn.qrTemp.SQL.Clear;
+  moduloConn.qrTemp.SQL.Add('select * from OS where id = '+id);
+  moduloConn.qrtemp.Open;
+
+  // Carregar imagem do campo BLOB para img1
+  if not moduloConn.qrtemp.FieldByName('img1').IsNull then
+  begin
+    TBlobField(moduloConn.qrtemp.FieldByName('img1')).SaveToStream(img1.Picture.Bitmap);
+  end;
+
+  // Carregar imagem do campo BLOB para img2
+  if not moduloConn.qrtemp.FieldByName('foto2').IsNull then
+  begin
+    TBlobField(moduloConn.qrtemp.FieldByName('foto2')).SaveToStream(img2.Picture.Bitmap);
+  end;
+end;
+
+end.

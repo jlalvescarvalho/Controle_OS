@@ -1,0 +1,54 @@
+unit view.carro;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls;
+
+type
+  TfrmCarro = class(TForm)
+    DBGrid1: TDBGrid;
+    Panel1: TPanel;
+    dsCarro: TDataSource;
+    btNovo: TButton;
+    Panel2: TPanel;
+    Label1: TLabel;
+    lblNreg: TLabel;
+    procedure btNovoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCarro: TfrmCarro;
+
+implementation
+
+{$R *.dfm}
+
+uses modulo, view.CadastrarCarro;
+
+procedure TfrmCarro.btNovoClick(Sender: TObject);
+begin
+  frmNewCarro := TfrmNewCarro.Create(self);
+  frmNewCarro.Show;
+
+  FormShow(self);
+end;
+
+procedure TfrmCarro.FormShow(Sender: TObject);
+begin
+  moduloConn.qrCarro.close;
+  moduloConn.qrCarro.Sql.clear;
+  moduloConn.qrCarro.SQL.Add('select c.*, s.nome as secretaria from carro c inner join secretaria s on c.ID_SECRETARIA = s.ID');
+  moduloConn.qrCarro.Open;
+
+  lblNreg.Caption := intToStr(moduloConn.qrCarro.RecordCount);
+end;
+
+end.

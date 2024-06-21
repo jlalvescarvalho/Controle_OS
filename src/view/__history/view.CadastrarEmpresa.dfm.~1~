@@ -1,0 +1,15 @@
+object frmCadastrarEmpresa: TfrmCadastrarEmpresa
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Cadastrar Empresa'
+  ClientHeight = 185
+  ClientWidth = 329
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+end

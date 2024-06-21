@@ -1,0 +1,34 @@
+program Controle_OS;
+
+uses
+  Vcl.Forms,
+  Principal in 'src\view\Principal.pas' {frmPrincipal},
+  view.empresa in 'src\view\view.empresa.pas' {frmEmpresa},
+  modulo in 'src\model\repository\modulo.pas' {moduloConn: TDataModule},
+  view.secretaria in 'src\view\view.secretaria.pas' {frmSecretaria},
+  view.carro in 'src\view\view.carro.pas' {frmCarro},
+  view.novaOS in 'src\view\view.novaOS.pas' {frmNovaOS},
+  view.todasOS in 'src\view\view.todasOS.pas' {frmTodasOS},
+  view.relatorios in 'src\view\view.relatorios.pas' {frmRel},
+  view.CadastrarCarro in 'src\view\view.CadastrarCarro.pas' {frmNewCarro},
+  view.CadastrarSecretaria in 'src\view\view.CadastrarSecretaria.pas' {frmNovaSecretaria},
+  view.CadastrarEmpresa in 'src\view\view.CadastrarEmpresa.pas' {frmCadastrarEmpresa};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmEmpresa, frmEmpresa);
+  Application.CreateForm(TmoduloConn, moduloConn);
+  Application.CreateForm(TfrmSecretaria, frmSecretaria);
+  Application.CreateForm(TfrmCarro, frmCarro);
+  Application.CreateForm(TfrmNovaOS, frmNovaOS);
+  Application.CreateForm(TfrmTodasOS, frmTodasOS);
+  Application.CreateForm(TfrmRel, frmRel);
+  Application.CreateForm(TfrmNewCarro, frmNewCarro);
+  Application.CreateForm(TfrmNovaSecretaria, frmNovaSecretaria);
+  Application.CreateForm(TfrmCadastrarEmpresa, frmCadastrarEmpresa);
+  Application.Run;
+end.

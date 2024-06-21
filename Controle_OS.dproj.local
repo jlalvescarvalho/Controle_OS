@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/06/13 13:54:28.000.929,=C:\Users\DELL\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/06/13 14:00:17.000.357,C:\Controle de O.S\src\view\Principal.pas=C:\Users\DELL\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/06/13 14:00:17.000.357,C:\Controle de O.S\src\view\Principal.dfm=C:\Users\DELL\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/06/13 14:02:10.000.771,C:\Controle de O.S\Controle_OS.dproj=C:\Users\DELL\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/06/14 10:37:29.000.249,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 10:38:22.000.683,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.empresa.dfm</Transaction>
+    <Transaction>2024/06/14 10:38:22.000.683,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.empresa.pas</Transaction>
+    <Transaction>2024/06/14 10:41:49.000.311,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 10:43:18.000.144,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\model\repository\modulo.dfm</Transaction>
+    <Transaction>2024/06/14 10:43:18.000.144,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\model\repository\modulo.pas</Transaction>
+    <Transaction>2024/06/14 10:44:25.000.777,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 10:45:23.000.272,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.secretaria.pas</Transaction>
+    <Transaction>2024/06/14 10:45:23.000.272,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.secretaria.dfm</Transaction>
+    <Transaction>2024/06/14 10:49:36.000.190,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 10:50:25.000.566,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.carro.pas</Transaction>
+    <Transaction>2024/06/14 10:50:25.000.566,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.carro.dfm</Transaction>
+    <Transaction>2024/06/14 10:53:30.000.435,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 10:54:32.000.399,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.novaOS.dfm</Transaction>
+    <Transaction>2024/06/14 10:54:32.000.399,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.novaOS.pas</Transaction>
+    <Transaction>2024/06/14 10:55:38.000.857,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 10:57:11.000.330,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.todasOS.pas</Transaction>
+    <Transaction>2024/06/14 10:57:11.000.330,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.todasOS.dfm</Transaction>
+    <Transaction>2024/06/14 11:01:25.000.272,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 11:02:17.000.016,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.relatorios.dfm</Transaction>
+    <Transaction>2024/06/14 11:02:17.000.016,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.relatorios.pas</Transaction>
+    <Transaction>2024/06/14 16:28:17.000.794,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 16:29:50.000.731,C:\Controle de O.S\src\view\view.CadastrarCarro.pas=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 16:29:50.000.731,C:\Controle de O.S\src\view\view.CadastrarCarro.dfm=C:\Controle de O.S\Unit1.dfm</Transaction>
+    <Transaction>2024/06/14 21:34:30.000.297,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 21:35:14.000.000,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.CadastrarSecretaria.pas</Transaction>
+    <Transaction>2024/06/14 21:35:14.000.000,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.CadastrarSecretaria.dfm</Transaction>
+    <Transaction>2024/06/14 21:43:26.000.748,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/14 21:44:34.000.054,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.CadastrarEmpresa.pas</Transaction>
+    <Transaction>2024/06/14 21:44:34.000.054,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.CadastrarEmpresa.dfm</Transaction>
+    <Transaction>2024/06/15 00:21:15.000.637,=C:\Controle de O.S\Unit1.pas</Transaction>
+    <Transaction>2024/06/15 00:25:34.000.055,C:\Controle de O.S\Unit1.pas=C:\Controle de O.S\src\view\view.locVeiculo.pas</Transaction>
+    <Transaction>2024/06/15 00:25:34.000.055,C:\Controle de O.S\Unit1.dfm=C:\Controle de O.S\src\view\view.locVeiculo.dfm</Transaction>
+    <Transaction>2024/06/18 00:43:32.000.107,=C:\Controle de O.S\src\controllers\Units\uFormat.pas</Transaction>
+    <Transaction>2024/06/18 23:24:03.000.435,C:\Controle_OS\src\view\view.relatorios.pas=</Transaction>
+    <Transaction>2024/06/18 23:31:20.000.836,=C:\Controle_OS\Unit1.pas</Transaction>
+    <Transaction>2024/06/18 23:32:01.000.887,C:\Controle_OS\src\view\view.rel.pas=C:\Controle_OS\Unit1.pas</Transaction>
+    <Transaction>2024/06/18 23:32:01.000.887,C:\Controle_OS\src\view\view.rel.dfm=C:\Controle_OS\Unit1.dfm</Transaction>
+    <Transaction>2024/06/19 10:58:55.000.112,=C:\Controle_OS\Unit1.pas</Transaction>
+    <Transaction>2024/06/19 11:00:09.000.712,C:\Controle_OS\Unit1.dfm=C:\Controle_OS\src\view\view.imagens.dfm</Transaction>
+    <Transaction>2024/06/19 11:00:09.000.712,C:\Controle_OS\Unit1.pas=C:\Controle_OS\src\view\view.imagens.pas</Transaction>
+  </Transactions>
+</BorlandProject>

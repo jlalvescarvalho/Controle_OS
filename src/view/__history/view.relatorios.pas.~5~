@@ -1,0 +1,44 @@
+unit view.relatorios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frxSmartMemo, frxClass, frxDBSet,
+  frCoreClasses, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmRel = class(TForm)
+    frxRel: TfrxReport;
+    frxDBOS: TfrxDBDataset;
+    qrSintetica: TFDQuery;
+    ComboBox1: TComboBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    ComboBox2: TComboBox;
+    GroupBox1: TGroupBox;
+    Panel1: TPanel;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    Label3: TLabel;
+    Label4: TLabel;
+    Button1: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRel: TfrmRel;
+
+implementation
+
+{$R *.dfm}
+
+uses modulo;
+
+end.

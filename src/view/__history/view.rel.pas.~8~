@@ -1,0 +1,55 @@
+unit view.rel;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, JvExMask,
+  JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, Vcl.ExtCtrls,
+  AdvSmoothButton, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, frxClass, frxDBSet;
+
+type
+  TfrmRel = class(TForm)
+    cbbRel: TComboBox;
+    lbl1: TLabel;
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    pnl1: TPanel;
+    grp1: TGroupBox;
+    dt1: TJvDatePickerEdit;
+    dt2: TJvDatePickerEdit;
+    lbl2: TLabel;
+    AdvSmoothButton1: TAdvSmoothButton;
+    frxrprt1: TfrxReport;
+    frxSintetico: TfrxDBDataset;
+    qrRel: TFDQuery;
+    procedure AdvSmoothButton1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRel: TfrmRel;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmRel.AdvSmoothButton1Click(Sender: TObject);
+begin
+//code
+end;
+
+procedure TfrmRel.FormShow(Sender: TObject);
+begin
+  dt1.Date := Date;
+  dt2.Date := Date;
+end;
+
+end.

@@ -1,0 +1,51 @@
+unit view.empresa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls;
+
+type
+  TfrmEmpresa = class(TForm)
+    btNovaEmpresa: TButton;
+    gridEmpresa: TDBGrid;
+    Panel1: TPanel;
+    Label1: TLabel;
+    lblNreg: TLabel;
+    dsEmpresa: TDataSource;
+    procedure btNovaEmpresaClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmEmpresa: TfrmEmpresa;
+
+implementation
+
+{$R *.dfm}
+
+uses view.CadastrarEmpresa, modulo;
+
+procedure TfrmEmpresa.btNovaEmpresaClick(Sender: TObject);
+begin
+  frmCadastrarEmpresa := TfrmCadastrarEmpresa.Create(self);
+  frmCadastrarEmpresa.ShowModal;
+end;
+
+procedure TfrmEmpresa.FormShow(Sender: TObject);
+begin
+   moduloConn.qrEmpresa.close;
+  moduloConn.qrEmpresa.Sql.clear;
+  moduloConn.qrEmpresa.SQL.Add('select * from empresa');
+  moduloConn.qrEmpresa.Open;
+
+  lblNreg.Caption := intToStr(moduloConn.qrEmpresa.RecordCount);
+end;
+
+end.
