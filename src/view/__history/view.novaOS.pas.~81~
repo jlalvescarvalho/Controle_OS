@@ -107,75 +107,98 @@ var
   Bitmap: TBitmap;
   valor: Double;
   idEmpresa: Integer;
+  valorTexto: string;
 begin
+  MemoryStream := TMemoryStream.Create;
+  MemoryStream1 := TMemoryStream.Create;
+  Bitmap := TBitmap.Create;
+  Jpg := TJPEGImage.Create;
+  Jpg1 := TJPEGImage.Create;
+
   try
-    try
+    // Verificar se a imagem foi selecionada e carregar imagens
+    if OpenPictureDialog1.FileName <> '' then
+    begin
       ext := UpperCase(ExtractFileExt(OpenPictureDialog1.FileName));
-      ext1 := UpperCase(ExtractFileExt(OpenPictureDialog2.FileName));
-      Jpg := TJPEGImage.Create;
-      Jpg1 := TJPEGImage.Create;
-      MemoryStream := TMemoryStream.Create;
-      MemoryStream1 := TMemoryStream.Create;
-      Bitmap := TBitmap.Create;
-      // Verificar extensão do arquivo e carregar imagens
-      try
-        if (ext = '.BMP') then
-        begin
-          Bitmap.LoadFromFile(OpenPictureDialog1.FileName);
-          Jpg.Assign(Bitmap);
-          Jpg.Compress;
-        end
-        else
-          Jpg.LoadFromFile(OpenPictureDialog1.FileName);
-        if (ext1 = '.BMP') then
-        begin
-          Bitmap.LoadFromFile(OpenPictureDialog2.FileName);
-          Jpg1.Assign(Bitmap);
-          Jpg1.Compress;
-        end
-        else
-          Jpg1.LoadFromFile(OpenPictureDialog2.FileName);
-        Jpg.SaveToStream(MemoryStream);
-        Jpg1.SaveToStream(MemoryStream1);
-        MemoryStream.Position := 0;
-        MemoryStream1.Position := 0;
-      finally
-        Jpg.Free;
-        Jpg1.Free; // Liberar os objetos TJPEGImage
-        Bitmap.Free;
+      if ext = '.BMP' then
+      begin
+        Bitmap.LoadFromFile(OpenPictureDialog1.FileName);
+        Jpg.Assign(Bitmap);
+        Jpg.Compress;
+      end
+      else
+      begin
+        Jpg.LoadFromFile(OpenPictureDialog1.FileName);
       end;
-      // Converter o texto do valor para Double
-      if not TryStrToFloat(edtTotal.Text, valor) then
-        raise Exception.Create('Valor inválido!');
-      // Extrair e converter idEmpresa de cbbEmpresa.Text
-      idEmpresa := StrToInt(Trim(GetFirstPart(cbbEmpresa.Text, '|')));
-      qrOS_Temp.Close;
-      qrOS_Temp.SQL.Clear;
-      qrOS_Temp.SQL.Add('INSERT INTO OS (DATA, ID_CARRO, ID_EMPRESA, SERVICO, RESPONSAVEL, VALOR, IMG1, FOTO2) ' +
-                        'VALUES (:data, :idCarro, :idEmpresa, :servico, :responsavel, :valor, :img1, :foto2)');
-      qrOS_Temp.Params.ParamByName('data').AsDate := dt1.Date;
-      qrOS_Temp.Params.ParamByName('idCarro').AsInteger := idCarro;
-      qrOS_Temp.Params.ParamByName('idEmpresa').AsInteger := idEmpresa;
-      qrOS_Temp.Params.ParamByName('servico').Value := memoServico.Text;
-      qrOS_Temp.Params.ParamByName('responsavel').Value := edtResponsavel.Text;
-      qrOS_Temp.Params.ParamByName('valor').AsFloat := valor;
-      qrOS_Temp.Params.ParamByName('img1').LoadFromStream(MemoryStream, ftBlob);
-      qrOS_Temp.Params.ParamByName('foto2').LoadFromStream(MemoryStream1, ftBlob);
-      qrOS_Temp.ExecSQL;
-      ShowMessage('Salvo com sucesso!');
-     Close;
-    except
-      on E: EConvertError do
-        ShowMessage('Erro de conversão: ' + E.Message);
-      on E: EDatabaseError do
-        ShowMessage('Erro no banco de dados: ' + E.Message);
-      on E: Exception do
-        ShowMessage('Erro: ' + E.Message);
+      Jpg.SaveToStream(MemoryStream);
+      MemoryStream.Position := 0;
     end;
-  finally
-    MemoryStream.Free;
-    MemoryStream1.Free;
+
+    if OpenPictureDialog2.FileName <> '' then
+    begin
+      ext1 := UpperCase(ExtractFileExt(OpenPictureDialog2.FileName));
+      if ext1 = '.BMP' then
+      begin
+        Bitmap.LoadFromFile(OpenPictureDialog2.FileName);
+        Jpg1.Assign(Bitmap);
+        Jpg1.Compress;
+      end
+      else
+      begin
+        Jpg1.LoadFromFile(OpenPictureDialog2.FileName);
+      end;
+      Jpg1.SaveToStream(MemoryStream1);
+      MemoryStream1.Position := 0;
+    end;
+
+    // Remover pontos de separação de milhares e converter o texto do valor para Double
+    valorTexto := StringReplace(edtTotal.Text, '.', '', [rfReplaceAll]);
+    if not TryStrToFloat(edtTotal.Text, valor) then
+      raise Exception.Create('Valor inválido!');
+
+    // Extrair e converter idEmpresa de cbbEmpresa.Text
+    idEmpresa := StrToInt(Trim(GetFirstPart(cbbEmpresa.Text, '|')));
+
+    qrOS_Temp.Close;
+    qrOS_Temp.SQL.Clear;
+    qrOS_Temp.SQL.Add('INSERT INTO OS (DATA, ID_CARRO, ID_EMPRESA, SERVICO, RESPONSAVEL, VALOR, IMG1, FOTO2) ' +
+                      'VALUES (:data, :idCarro, :idEmpresa, :servico, :responsavel, :valor, :img1, :foto2)');
+    qrOS_Temp.Params.ParamByName('data').AsDate := dt1.Date;
+    qrOS_Temp.Params.ParamByName('idCarro').AsInteger := idCarro;
+    qrOS_Temp.Params.ParamByName('idEmpresa').AsInteger := idEmpresa;
+    qrOS_Temp.Params.ParamByName('servico').Value := memoServico.Text;
+    qrOS_Temp.Params.ParamByName('responsavel').Value := edtResponsavel.Text;
+    qrOS_Temp.Params.ParamByName('valor').AsFloat := valor;
+
+    if MemoryStream.Size > 0 then
+      qrOS_Temp.Params.ParamByName('img1').LoadFromStream(MemoryStream, ftBlob)
+    else
+      qrOS_Temp.Params.ParamByName('img1').Clear; // Definir o parâmetro como NULL
+
+    if MemoryStream1.Size > 0 then
+      qrOS_Temp.Params.ParamByName('foto2').LoadFromStream(MemoryStream1, ftBlob)
+    else
+      qrOS_Temp.Params.ParamByName('foto2').Clear; // Definir o parâmetro como NULL
+
+    qrOS_Temp.ExecSQL;
+    ShowMessage('Salvo com sucesso!');
+    Close;
+
+  except
+    on E: EConvertError do
+      ShowMessage('Erro de conversão: ' + E.Message);
+    on E: EDatabaseError do
+      ShowMessage('Erro no banco de dados: ' + E.Message);
+    on E: Exception do
+      ShowMessage('Erro: ' + E.Message);
   end;
+
+  // Liberar os objetos no bloco finally
+  Jpg.Free;
+  Jpg1.Free;
+  Bitmap.Free;
+  MemoryStream.Free;
+  MemoryStream1.Free;
 end;
 
 
@@ -187,7 +210,7 @@ end;
 
 procedure TfrmNovaOS.edtTotalExit(Sender: TObject);
 begin
-  edtTotal.Text := 'R$ ' + FormatFloat('###,###,##0.00', edtTotal.Text);
+  edtTotal.Text := FormatFloat('###,###,##0.00', StrToFloat(edtTotal.Text));
 end;
 
 procedure TfrmNovaOS.edtVeiculoKeyPress(Sender: TObject; var Key: Char);
@@ -202,6 +225,12 @@ end;
 
 procedure TfrmNovaOS.FormShow(Sender: TObject);
 begin
+
+  OpenPictureDialog1.Filter := 'JPEG Image|*.jpg;*.jpeg';
+  OpenPictureDialog1.DefaultExt := 'jpg';
+  OpenPictureDialog2.Filter := 'JPEG Image|*.jpg;*.jpeg';
+  OpenPictureDialog2.DefaultExt := 'jpg';
+
   moduloConn.qrEmpresa.Close;
   moduloConn.qrEmpresa.SQL.Clear;
   moduloConn.qrEmpresa.SQL.Add('select * from empresa');
@@ -213,7 +242,7 @@ begin
     moduloConn.qrEmpresa.Next;
   end;
 
-  edtTotal.Text := 'R$ 0,00';
+  edtTotal.Text := '0,00';
 end;
 
 procedure TfrmNovaOS.Image1Click(Sender: TObject);

@@ -288,7 +288,8 @@ object frmTodasOS: TfrmTodasOS
       'inner join carro c on os.id_carro = c.id'
       'inner join secretaria s on c.id_secretaria = s.id'
       'inner join empresa e on os.id_empresa = e.id'
-      'where data between :dt1 and :dt2')
+      'where data between :dt1 and :dt2'
+      'order by os.data desc')
     Left = 272
     Top = 192
     ParamData = <

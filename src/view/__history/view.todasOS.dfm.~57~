@@ -12,7 +12,7 @@ object frmTodasOS: TfrmTodasOS
   Font.Name = 'Segoe UI'
   Font.Style = []
   OldCreateOrder = True
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
@@ -91,31 +91,13 @@ object frmTodasOS: TfrmTodasOS
         TextHint = 'Filtrar por secretaria'
         OnSelect = cbbSecretariaFSelect
       end
-      object dt1: TDateTimePicker
-        Left = 936
-        Top = 15
-        Width = 82
-        Height = 23
-        Date = 45457.998868807870000000
-        Time = 45457.998868807870000000
-        TabOrder = 3
-      end
-      object dt2: TDateTimePicker
-        Left = 1041
-        Top = 15
-        Width = 81
-        Height = 23
-        Date = 45457.999068692130000000
-        Time = 45457.999068692130000000
-        TabOrder = 4
-      end
       object btBuscar: TButton
         Left = 1128
         Top = 13
         Width = 75
         Height = 25
         Caption = 'Buscar'
-        TabOrder = 5
+        TabOrder = 3
         OnClick = btBuscarClick
       end
       object Edit1: TEdit
@@ -130,7 +112,7 @@ object frmTodasOS: TfrmTodasOS
         CharCase = ecUpperCase
         Ctl3D = False
         ParentCtl3D = False
-        TabOrder = 6
+        TabOrder = 4
         TextHint = 'Filtrar por respons'#225'vel'
         OnChange = Edit1Change
       end
@@ -140,8 +122,26 @@ object frmTodasOS: TfrmTodasOS
         Width = 93
         Height = 21
         Caption = 'Limpar Filtros'
-        TabOrder = 7
+        TabOrder = 5
         OnClick = btLimparClick
+      end
+      object dt1: TJvDatePickerEdit
+        Left = 936
+        Top = 15
+        Width = 82
+        Height = 23
+        AllowNoDate = True
+        Checked = True
+        TabOrder = 6
+      end
+      object dt2: TJvDatePickerEdit
+        Left = 1036
+        Top = 15
+        Width = 82
+        Height = 23
+        AllowNoDate = True
+        Checked = True
+        TabOrder = 7
       end
     end
   end
@@ -160,6 +160,7 @@ object frmTodasOS: TfrmTodasOS
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
+    OnDblClick = DBGrid1DblClick
     Columns = <
       item
         Expanded = False
@@ -233,7 +234,7 @@ object frmTodasOS: TfrmTodasOS
       end
       item
         Expanded = False
-        FieldName = 'COBUSTIVEL'
+        FieldName = 'COMBUSTIVEL'
         Width = 200
         Visible = True
       end
@@ -295,12 +296,13 @@ object frmTodasOS: TfrmTodasOS
         Name = 'DT1'
         DataType = ftDate
         ParamType = ptInput
-        Value = Null
+        Value = 36526d
       end
       item
         Name = 'DT2'
         DataType = ftDate
         ParamType = ptInput
+        Value = 72686d
       end>
     object qrOSID: TIntegerField
       FieldName = 'ID'
@@ -321,12 +323,6 @@ object frmTodasOS: TfrmTodasOS
       FieldName = 'RESPONSAVEL'
       Origin = 'RESPONSAVEL'
       Size = 50
-    end
-    object qrOSVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      Origin = 'VALOR'
-      Precision = 18
-      Size = 2
     end
     object qrOSIMG1: TBlobField
       FieldName = 'IMG1'
@@ -351,14 +347,6 @@ object frmTodasOS: TfrmTodasOS
       ProviderFlags = []
       ReadOnly = True
       Size = 100
-    end
-    object qrOSCOBUSTIVEL: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'COBUSTIVEL'
-      Origin = 'COBUSTIVEL'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 50
     end
     object qrOSTIPO: TStringField
       AutoGenerateValue = arDefault
@@ -407,5 +395,23 @@ object frmTodasOS: TfrmTodasOS
       ReadOnly = True
       Size = 50
     end
+    object qrOSVALOR: TBCDField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Precision = 18
+      Size = 2
+    end
+    object qrOSCOMBUSTIVEL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMBUSTIVEL'
+      Origin = 'COMBUSTIVEL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+  end
+  object popUp: TPopupMenu
+    Left = 672
+    Top = 216
   end
 end

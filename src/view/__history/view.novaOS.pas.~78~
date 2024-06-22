@@ -43,7 +43,6 @@ type
     procedure edtVeiculoKeyPress(Sender: TObject; var Key: Char);
     procedure btSalvarOSClick(Sender: TObject);
     procedure edtTotalChange(Sender: TObject);
-    procedure edtTotalEnter(Sender: TObject);
     procedure edtTotalExit(Sender: TObject);
   private
     function GetFirstPart(const S: string; const Delimiter: Char): string;
@@ -160,8 +159,15 @@ begin
       qrOS_Temp.Params.ParamByName('servico').Value := memoServico.Text;
       qrOS_Temp.Params.ParamByName('responsavel').Value := edtResponsavel.Text;
       qrOS_Temp.Params.ParamByName('valor').AsFloat := valor;
-      qrOS_Temp.Params.ParamByName('img1').LoadFromStream(MemoryStream, ftBlob);
-      qrOS_Temp.Params.ParamByName('foto2').LoadFromStream(MemoryStream1, ftBlob);
+      if MemoryStream then
+         qrOS_Temp.Params.ParamByName('img1').LoadFromStream(MemoryStream, ftBlob)
+      else
+         qrOS_Temp.Params.ParamByName('img1').Value := '';
+
+      if MemoryStream1 then
+         qrOS_Temp.Params.ParamByName('foto2').LoadFromStream(MemoryStream1, ftBlob)
+      else
+         qrOS_Temp.Params.ParamByName('foto2').Value := '';
       qrOS_Temp.ExecSQL;
       ShowMessage('Salvo com sucesso!');
      Close;
@@ -186,14 +192,9 @@ begin
   Formatar(edtTotal, TFormato.Valor);
 end;
 
-procedure TfrmNovaOS.edtTotalEnter(Sender: TObject);
-begin
-  ResetFormat(edtTotal);
-end;
-
 procedure TfrmNovaOS.edtTotalExit(Sender: TObject);
 begin
-  Formatar(edtTotal, TFormato.Valor);
+  edtTotal.Text := FormatFloat('###,###,##0.00', StrToFloat(edtTotal.Text));
 end;
 
 procedure TfrmNovaOS.edtVeiculoKeyPress(Sender: TObject; var Key: Char);
@@ -208,6 +209,12 @@ end;
 
 procedure TfrmNovaOS.FormShow(Sender: TObject);
 begin
+
+  OpenPictureDialog1.Filter := 'JPEG Image|*.jpg;*.jpeg';
+  OpenPictureDialog1.DefaultExt := 'jpg';
+  OpenPictureDialog2.Filter := 'JPEG Image|*.jpg;*.jpeg';
+  OpenPictureDialog2.DefaultExt := 'jpg';
+
   moduloConn.qrEmpresa.Close;
   moduloConn.qrEmpresa.SQL.Clear;
   moduloConn.qrEmpresa.SQL.Add('select * from empresa');
@@ -218,6 +225,8 @@ begin
     cbbEmpresa.Items.Add(moduloConn.qrEmpresa.FieldByName('id').AsString +' | '+moduloConn.qrEmpresa.FieldByName('Nome').AsString);
     moduloConn.qrEmpresa.Next;
   end;
+
+  edtTotal.Text := '0,00';
 end;
 
 procedure TfrmNovaOS.Image1Click(Sender: TObject);
