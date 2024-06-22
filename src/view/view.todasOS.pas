@@ -48,6 +48,7 @@ type
     qrOSVALOR: TBCDField;
     qrOSCOMBUSTIVEL: TStringField;
     popUp: TPopupMenu;
+    E1: TMenuItem;
     procedure edtPlacaFChange(Sender: TObject);
     procedure edtModeloFChange(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
@@ -56,6 +57,7 @@ type
     procedure btLimparClick(Sender: TObject);
     procedure btBuscarClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure E1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -112,6 +114,28 @@ begin
     frmImagens.id := id;
     frmImagens.ShowModal;
 
+  end;
+end;
+
+procedure TfrmTodasOS.E1Click(Sender: TObject);
+var
+  id: string;
+begin
+  if not (DBGrid1.DataSource.DataSet.Bof and DBGrid1.DataSource.DataSet.Eof) then
+  begin
+    id := DBGrid1.DataSource.DataSet.FieldByName('ID').AsString;
+
+    if MessageDlg('Deseja mesmo apagar esta O.S ?', mtConfirmation,[mbYes, mbNo], 0) = mrYes then
+    begin
+      moduloConn.qrTemp.Close;
+      moduloConn.qrTemp.SQL.Clear;
+      moduloConn.qrTemp.SQL.Add('delete from os where id = '+id);
+      moduloConn.qrtemp.ExecSQL;
+
+      moduloConn.conexao.commit;
+
+      FormShow(self);
+    end;
   end;
 end;
 

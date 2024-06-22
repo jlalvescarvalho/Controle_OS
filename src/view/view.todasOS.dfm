@@ -154,6 +154,7 @@ object frmTodasOS: TfrmTodasOS
     BorderStyle = bsNone
     DataSource = ds1
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    PopupMenu = popUp
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -414,5 +415,10 @@ object frmTodasOS: TfrmTodasOS
   object popUp: TPopupMenu
     Left = 672
     Top = 216
+    object E1: TMenuItem
+      Caption = 'Excluir'
+      ShortCut = 46
+      OnClick = E1Click
+    end
   end
 end

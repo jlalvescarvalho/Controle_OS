@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Mask, JvExMask, JvToolEdit,
-  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit;
+  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, view.imagens, Vcl.Menus;
 
 type
   TfrmTodasOS = class(TForm)
@@ -36,7 +36,6 @@ type
     qrOSFOTO2: TBlobField;
     qrOSPLACA: TStringField;
     qrOSMODELO: TStringField;
-    qrOSCOBUSTIVEL: TStringField;
     qrOSTIPO: TStringField;
     qrOSMOTORISTA: TStringField;
     qrOSITEM: TIntegerField;
@@ -47,6 +46,8 @@ type
     dt1: TJvDatePickerEdit;
     dt2: TJvDatePickerEdit;
     qrOSVALOR: TBCDField;
+    qrOSCOMBUSTIVEL: TStringField;
+    popUp: TPopupMenu;
     procedure edtPlacaFChange(Sender: TObject);
     procedure edtModeloFChange(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
@@ -54,6 +55,7 @@ type
     procedure cbbSecretariaFSelect(Sender: TObject);
     procedure btLimparClick(Sender: TObject);
     procedure btBuscarClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,6 +98,21 @@ begin
   qrOS.Filtered := False;
   qrOs.filter := 'secretaria like '+QuotedStr('%'+cbbSecretariaF.Text+'%');
   qrOS.Filtered := True;
+end;
+
+procedure TfrmTodasOS.DBGrid1DblClick(Sender: TObject);
+var
+  id: string;
+begin
+  if not (DBGrid1.DataSource.DataSet.Bof and DBGrid1.DataSource.DataSet.Eof) then
+  begin
+    id := DBGrid1.DataSource.DataSet.FieldByName('ID').AsString;
+
+    frmImagens := TfrmImagens.Create(self);
+    frmImagens.id := id;
+    frmImagens.ShowModal;
+
+  end;
 end;
 
 procedure TfrmTodasOS.Edit1Change(Sender: TObject);

@@ -12,7 +12,7 @@ object frmTodasOS: TfrmTodasOS
   Font.Name = 'Segoe UI'
   Font.Style = []
   OldCreateOrder = True
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
@@ -160,6 +160,7 @@ object frmTodasOS: TfrmTodasOS
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
+    OnDblClick = DBGrid1DblClick
     Columns = <
       item
         Expanded = False
@@ -233,7 +234,7 @@ object frmTodasOS: TfrmTodasOS
       end
       item
         Expanded = False
-        FieldName = 'COBUSTIVEL'
+        FieldName = 'COMBUSTIVEL'
         Width = 200
         Visible = True
       end
@@ -287,7 +288,8 @@ object frmTodasOS: TfrmTodasOS
       'inner join carro c on os.id_carro = c.id'
       'inner join secretaria s on c.id_secretaria = s.id'
       'inner join empresa e on os.id_empresa = e.id'
-      'where data between :dt1 and :dt2')
+      'where data between :dt1 and :dt2'
+      'order by os.data desc')
     Left = 272
     Top = 192
     ParamData = <
@@ -295,12 +297,13 @@ object frmTodasOS: TfrmTodasOS
         Name = 'DT1'
         DataType = ftDate
         ParamType = ptInput
-        Value = Null
+        Value = 36526d
       end
       item
         Name = 'DT2'
         DataType = ftDate
         ParamType = ptInput
+        Value = 72686d
       end>
     object qrOSID: TIntegerField
       FieldName = 'ID'
@@ -321,12 +324,6 @@ object frmTodasOS: TfrmTodasOS
       FieldName = 'RESPONSAVEL'
       Origin = 'RESPONSAVEL'
       Size = 50
-    end
-    object qrOSVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      Origin = 'VALOR'
-      Precision = 18
-      Size = 2
     end
     object qrOSIMG1: TBlobField
       FieldName = 'IMG1'
@@ -351,14 +348,6 @@ object frmTodasOS: TfrmTodasOS
       ProviderFlags = []
       ReadOnly = True
       Size = 100
-    end
-    object qrOSCOBUSTIVEL: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'COBUSTIVEL'
-      Origin = 'COBUSTIVEL'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 50
     end
     object qrOSTIPO: TStringField
       AutoGenerateValue = arDefault
@@ -407,5 +396,23 @@ object frmTodasOS: TfrmTodasOS
       ReadOnly = True
       Size = 50
     end
+    object qrOSVALOR: TBCDField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Precision = 18
+      Size = 2
+    end
+    object qrOSCOMBUSTIVEL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMBUSTIVEL'
+      Origin = 'COMBUSTIVEL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+  end
+  object popUp: TPopupMenu
+    Left = 672
+    Top = 216
   end
 end
