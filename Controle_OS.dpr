@@ -15,7 +15,9 @@ uses
   view.locVeiculo in 'src\view\view.locVeiculo.pas' {frmLocVeic},
   uFormat in 'src\controllers\Units\uFormat.pas',
   view.rel in 'src\view\view.rel.pas' {frmRel},
-  view.imagens in 'src\view\view.imagens.pas' {frmImagens};
+  view.imagens in 'src\view\view.imagens.pas' {frmImagens},
+  view.Backup in 'src\view\view.Backup.pas' {frmBackup},
+  view.Restore in 'src\view\view.Restore.pas' {frmRestore};
 
 {$R *.res}
 
@@ -35,5 +37,7 @@ begin
   Application.CreateForm(TfrmLocVeic, frmLocVeic);
   Application.CreateForm(TfrmRel, frmRel);
   Application.CreateForm(TfrmImagens, frmImagens);
+  Application.CreateForm(TfrmBackup, frmBackup);
+  Application.CreateForm(TfrmRestore, frmRestore);
   Application.Run;
 end.

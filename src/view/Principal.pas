@@ -5,7 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, Vcl.StdCtrls, view.rel;
+  Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, Vcl.StdCtrls, view.rel, Vcl.Menus,
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, view.CadastrarCarro,
+  view.CadastrarSecretaria, view.CadastrarEmpresa, view.Backup, view.Restore;
 
 type
   TfrmPrincipal = class(TForm)
@@ -18,12 +20,30 @@ type
     Image1: TImage;
     Image2: TImage;
     Label1: TLabel;
+    mm1: TMainMenu;
+    C2: TMenuItem;
+    C1: TMenuItem;
+    S1: TMenuItem;
+    E1: TMenuItem;
+    O1: TMenuItem;
+    T1: TMenuItem;
+    N1: TMenuItem;
+    B1: TMenuItem;
+    F1: TMenuItem;
+    R1: TMenuItem;
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
+    procedure C1Click(Sender: TObject);
+    procedure S1Click(Sender: TObject);
+    procedure E1Click(Sender: TObject);
+    procedure T1Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure F1Click(Sender: TObject);
+    procedure R1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,6 +59,42 @@ implementation
 
 uses view.empresa, view.secretaria, modulo, view.carro, view.novaOS,
   view.todasOS;
+
+procedure TfrmPrincipal.C1Click(Sender: TObject);
+begin
+   frmNewCarro := TfrmNewCarro.Create(self);
+   frmNewCarro.ShowModal;
+end;
+
+procedure TfrmPrincipal.E1Click(Sender: TObject);
+begin
+  frmCadastrarEmpresa := TfrmCadastrarEmpresa.Create(self);
+  frmCadastrarEmpresa.ShowModal;
+end;
+
+procedure TfrmPrincipal.F1Click(Sender: TObject);
+begin
+  frmBackup := TfrmBackup.Create(self);
+  frmBackup.ShowModal;
+end;
+
+procedure TfrmPrincipal.N1Click(Sender: TObject);
+begin
+  frmNovaOS := TfrmNovaOS.Create(self);
+  frmNovaOS.ShowModal;
+end;
+
+procedure TfrmPrincipal.R1Click(Sender: TObject);
+begin
+  frmRestore := TfrmRestore.Create(self);
+  frmRestore.ShowModal;
+end;
+
+procedure TfrmPrincipal.S1Click(Sender: TObject);
+begin
+  frmNovaSecretaria := TfrmNovaSecretaria.Create(self);
+  frmNovaSecretaria.ShowModal;
+end;
 
 procedure TfrmPrincipal.SpeedButton1Click(Sender: TObject);
 begin
@@ -74,6 +130,12 @@ procedure TfrmPrincipal.SpeedButton6Click(Sender: TObject);
 begin
   frmEmpresa := TfrmEmpresa.create(self);
   frmEmpresa.Show;
+end;
+
+procedure TfrmPrincipal.T1Click(Sender: TObject);
+begin
+  frmTodasOS := TfrmTodasOS.Create(self);
+  frmTodasOS.Show;
 end;
 
 end.

@@ -1,0 +1,89 @@
+unit view.Backup;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, acPNG, dxGDIPlusClasses, Vcl.ExtCtrls,
+  acPathDialog, Vcl.StdCtrls, modulo, FireDAC.Stan.Def, FireDAC.Phys.IBWrapper,
+  FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.IBBase, JvBaseDlg, FileCtrl,
+  JvSelectDirectory;
+
+type
+  TfrmBackup = class(TForm)
+    pnl1: TPanel;
+    img1: TImage;
+    img2: TImage;
+    img3: TImage;
+    pnl2: TPanel;
+    edtPath: TEdit;
+    mmo1: TMemo;
+    btbackup: TButton;
+    btn1: TButton;
+    fdBackup: TFDIBBackup;
+    procedure btbackupClick(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+    procedure fdBackupProgress(ASender: TFDPhysDriverService;
+      const AMessage: string);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBackup: TfrmBackup;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmBackup.btbackupClick(Sender: TObject);
+begin
+  try
+    if edtPath = '' then
+    begin
+      ShowMessage('Favor selecione um local para salvar o backup !');
+      Exit;
+    end;
+
+    // Configurar o TFDBackup
+    with fdBackup do
+    begin
+      // Associar a conexão
+      Database := moduloconn.conexao.Params.Database;
+      UserName := moduloConn.conexao.Params.UserName;
+      Password := moduloConn.conexao.Params.Password;
+
+      // Limpar qualquer configuração anterior
+      BackupFiles.Clear;
+
+      // Configurar o arquivo de backup com o caminho selecionado pelo usuário
+      BackupFiles.Add(edtPath.Text + '\backup.fbk');
+
+      // Executar o backup
+      Backup;
+    end;
+
+    ShowMessage('Backup realizado com sucesso!');
+  except
+    on E: Exception do
+      ShowMessage('Erro ao realizar o backup: ' + E.Message);
+  end;
+end;
+
+procedure TfrmBackup.btn1Click(Sender: TObject);
+var
+  BackupPath : string;
+begin
+  SelectDirectory('Selecione a pasta para o backup', '', BackupPath);
+  edtPath.Text :=  BackupPath;
+end;
+
+procedure TfrmBackup.fdBackupProgress(ASender: TFDPhysDriverService;
+  const AMessage: string);
+begin
+  mmo1.Lines.Add(AMessage);
+end;
+
+end.

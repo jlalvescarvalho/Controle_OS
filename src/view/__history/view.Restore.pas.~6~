@@ -1,0 +1,89 @@
+unit view.Restore;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Def,
+  FireDAC.Phys.IBWrapper, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.IBBase,
+  Vcl.StdCtrls, acPNG, dxGDIPlusClasses, Vcl.ExtCtrls, FileCtrl, modulo;
+
+type
+  TfrmRestore = class(TForm)
+    pnl1: TPanel;
+    img1: TImage;
+    img2: TImage;
+    img3: TImage;
+    pnl2: TPanel;
+    edtPath: TEdit;
+    mmo1: TMemo;
+    btnbtbackup: TButton;
+    btn1: TButton;
+    fdRestore: TFDIBRestore;
+    procedure btn1Click(Sender: TObject);
+    procedure fdRestoreProgress(ASender: TFDPhysDriverService;
+      const AMessage: string);
+    procedure btnbtbackupClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRestore: TfrmRestore;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmRestore.btn1Click(Sender: TObject);
+var
+  BackupPath : string;
+begin
+  SelectDirectory('Selecione a pasta para o backup', '', BackupPath);
+  edtPath.Text :=  BackupPath;
+end;
+
+procedure TfrmRestore.btnbtbackupClick(Sender: TObject);
+begin
+  try
+    if edtPath.Text = '' then
+    begin
+      ShowMessage('Favor selecione um local para salvar o backup !');
+      Exit;
+    end;
+
+    // Configurar o TFDBackup
+    with fdBackup do
+    begin
+      // Associar a conexão
+      Database := moduloconn.conexao.Params.Database;
+      UserName := moduloConn.conexao.Params.UserName;
+      Password := moduloConn.conexao.Params.Password;
+
+      // Limpar qualquer configuração anterior
+      BackupFiles.Clear;
+
+      // Configurar o arquivo de backup com o caminho selecionado pelo usuário
+      BackupFiles.Add(edtPath.Text + '\backup.fbk');
+
+      // Executar o backup
+      Backup;
+    end;
+
+    ShowMessage('Backup realizado com sucesso!');
+    Close;
+  except
+    on E: Exception do
+      ShowMessage('Erro ao realizar o backup: ' + E.Message);
+  end;
+end;
+
+procedure TfrmRestore.fdRestoreProgress(ASender: TFDPhysDriverService;
+  const AMessage: string);
+begin
+  mmo1.Lines.Add(AMessage);
+end;
+
+end.
