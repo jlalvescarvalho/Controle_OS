@@ -235,7 +235,6 @@ procedure TfrmNovaOS.FormShow(Sender: TObject);
 var
   Stm: TStream;
   Jpg: TJPEGImage;
-  i : Integer;
 begin
 
   OpenPictureDialog1.Filter := 'JPEG Image|*.jpg;*.jpeg';
@@ -270,29 +269,19 @@ begin
     qrOS_Temp.Open;
 
     idCarro := qrOS_Temp.FieldByName('id_carro').AsInteger;
-    placa := qrOS_Temp.FieldByName('placa').AsString;
+    placa := qrOS_Temp.FieldByName('c.placa').AsString;
     edtVeiculo.Text := placa;
-    dt1.Date := qrOS_Temp.FieldByName('data').AsDateTime;
-    edtResponsavel.Text := qrOS_Temp.FieldByName('responsavel').AsString;
-    memoServico.Lines.Add(qrOS_Temp.FieldByName('servico').AsString);
-    edtTotal.Text := qrOS_Temp.FieldByName('valor').AsString;
+    dt1.Date := qrOS_Temp.FieldByName('os.data').AsDateTime;
+    edtResponsavel.Text := qrOS_Temp.FieldByName('os.responsavel').AsString;
+    memoServico.Lines.Add(qrOS_Temp.FieldByName('os.servico').AsString);
+    edtTotal.Text := qrOS_Temp.FieldByName('os.valor').AsString;
 
-    for i := 0 to cbbEmpresa.Items.Count - 1 do
-    begin
-      if Pos(qrOS_Temp.FieldByName('empresa').AsString, cbbEmpresa.Items[i]) > 0 then
-      begin
-        cbbEmpresa.ItemIndex := i;
-        Break;
-      end;
-    end;
-
-
-    if TBlobField(qrOS_Temp.FieldByName('img1')).BlobSize > 0 then
+    if TBlobField(qrOS_Temp.FieldByName('os.img1')).BlobSize > 0 then
     begin
       Stm := TMemoryStream.Create;
       Jpg := TJpegImage.Create;
     try
-      TBlobField(qrOS_Temp.FieldByName('img1')).SaveToStream(Stm);
+      TBlobField(qrOS_Temp.FieldByName('os.img1')).SaveToStream(Stm);
       Stm.Position := 0;
       Jpg.LoadFromStream(Stm);
       try
@@ -310,12 +299,12 @@ begin
 
 
 //IMAGEM 2
-    if TBlobField(qrOS_Temp.FieldByName('foto2')).BlobSize > 0 then
+    if TBlobField(qrOS_Temp.FieldByName('os.foto2')).BlobSize > 0 then
     begin
       Stm := TMemoryStream.Create;
       Jpg := TJpegImage.Create;
     try
-      TBlobField(qrOS_Temp.FieldByName('foto2')).SaveToStream(Stm);
+      TBlobField(qrOS_Temp.FieldByName('os.foto2')).SaveToStream(Stm);
       Stm.Position := 0;
       Jpg.LoadFromStream(Stm);
       try

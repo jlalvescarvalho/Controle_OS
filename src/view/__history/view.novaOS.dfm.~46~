@@ -212,7 +212,7 @@ object frmNovaOS: TfrmNovaOS
   end
   object edtVeiculo: TEdit
     Left = 8
-    Top = 31
+    Top = 32
     Width = 161
     Height = 23
     BorderStyle = bsNone

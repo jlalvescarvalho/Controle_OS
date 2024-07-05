@@ -130,7 +130,7 @@ begin
 
     periodo := ' where os.data between :dt1 and :dt2';
 
-    frxrprt1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'rel\rel002.fr3');
+    frxrprt1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'rel\rel001.fr3');
 
     qrRel.Close;
     qrRel.SQL.Clear;

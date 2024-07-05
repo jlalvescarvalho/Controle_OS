@@ -99,52 +99,7 @@ begin
 
     frxrprt1.ShowReport;
 
-  end
-  else if cbbRel.Text = 'RELATÓRIO ANALÍTICO' then
-  begin
-
-
-    if cbbGrupo.Text = 'TODOS' then
-    begin
-       grupo := '';
-    end
-    else
-    begin
-      grupo := ' and s.nome ='+ QuotedStr(cbbGrupo.Text);
-    end;
-
-    if cbbCarro.Text <> 'TODOS' then
-      placa := ' and c.placa = '+QuotedStr(cbbCarro.Text)
-    else
-      placa := '';
-
-    if cbbTipo.Text = 'TODOS' then
-       tipo := ''
-    else
-      tipo :=  ' and c.tipo = '+QuotedStr(cbbTipo.Text);
-
-    if cbbEmpresa.Text = 'TODOS' then
-       empresa := ''
-    else
-      empresa :=  ' and e.nome = '+QuotedStr(cbbEmpresa.Text);
-
-    periodo := ' where os.data between :dt1 and :dt2';
-
-    frxrprt1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'rel\rel002.fr3');
-
-    qrRel.Close;
-    qrRel.SQL.Clear;
-    qrRel.SQL.Add('select os.*, c.*, e.nome as empresa, s.nome as secretaria from os ');
-    qrRel.SQL.Add('inner join carro c on os.id_carro = c.id ');
-    qrRel.SQL.Add('inner join secretaria s on c.id_secretaria = s.id ');
-    qrRel.SQL.Add('inner join empresa e on os.id_empresa = e.id '+periodo+placa+tipo+empresa+grupo);
-    qrRel.Params.ParamByName('dt1').AsDateTime := dt1.Date;
-    qrRel.Params.ParamByName('dt2').AsDateTime := dt2.Date;
-    qrRel.Open;
-
-    frxrprt1.ShowReport;
   end;
-
 
 end;
 
@@ -204,7 +159,7 @@ begin
 
   while not moduloConn.qrTemp.Eof do
   begin
-    cbbEmpresa.Items.Add(moduloConn.qrTemp.FieldByName('nome').AsString);
+    cbbTipo.Items.Add(moduloConn.qrTemp.FieldByName('nome').AsString);
     moduloConn.qrTemp.Next;
   end;
 end;

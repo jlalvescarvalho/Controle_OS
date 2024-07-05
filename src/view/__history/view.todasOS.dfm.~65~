@@ -422,7 +422,6 @@ object frmTodasOS: TfrmTodasOS
     end
     object E2: TMenuItem
       Caption = 'Editar'
-      OnClick = E2Click
     end
   end
 end

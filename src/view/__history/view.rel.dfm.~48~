@@ -185,7 +185,7 @@ object frmRel: TfrmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45461.895130115700000000
-    ReportOptions.LastChange = 45477.756179097220000000
+    ReportOptions.LastChange = 45477.755091678240000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -46820,14 +46820,6 @@ object frmRel: TfrmRel
           Memo.UTF8W = (
             '[frxSintetico."SERVICO"]')
           ParentFont = False
-        end
-        object Line3: TfrxLineView
-          Align = baWidth
-          Top = 86.929189999999970000
-          Width = 718.110700000000000000
-          Color = clBlack
-          Frame.Style = fsDot
-          Frame.Typ = [ftTop]
         end
       end
       object PageFooter1: TfrxPageFooter

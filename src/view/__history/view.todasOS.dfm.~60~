@@ -420,9 +420,5 @@ object frmTodasOS: TfrmTodasOS
       ShortCut = 46
       OnClick = E1Click
     end
-    object E2: TMenuItem
-      Caption = 'Editar'
-      OnClick = E2Click
-    end
   end
 end

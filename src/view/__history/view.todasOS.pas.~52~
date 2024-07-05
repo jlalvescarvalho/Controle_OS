@@ -9,7 +9,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Mask, JvExMask, JvToolEdit,
-  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, view.imagens, Vcl.Menus;
+  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, view.imagens, Vcl.Menus,
+  view.novaOS;
 
 type
   TfrmTodasOS = class(TForm)
@@ -73,7 +74,7 @@ implementation
 
 {$R *.dfm}
 
-uses modulo, view.novaOS;
+uses modulo;
 
 procedure TfrmTodasOS.btBuscarClick(Sender: TObject);
 begin
@@ -142,26 +143,9 @@ begin
 end;
 
 procedure TfrmTodasOS.E2Click(Sender: TObject);
-var
-  id: string;
 begin
-  if not (DBGrid1.DataSource.DataSet.Bof and DBGrid1.DataSource.DataSet.Eof) then
-  begin
-    id := DBGrid1.DataSource.DataSet.FieldByName('ID').AsString;
-
-
-    frmNovaOS := TfrmNovaOS.create(self);
-    frmNovaOS.tipo := 'update';
-    frmNovaOS.idOS := StrToInt(id);
-    frmNovaOS.showModal;
-
-    moduloConn.conexao.commit;
-
-    FormShow(self);
-
-  end;
+  frmn
 end;
-
 
 procedure TfrmTodasOS.Edit1Change(Sender: TObject);
 begin

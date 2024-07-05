@@ -232,10 +232,6 @@ begin
 end;
 
 procedure TfrmNovaOS.FormShow(Sender: TObject);
-var
-  Stm: TStream;
-  Jpg: TJPEGImage;
-  i : Integer;
 begin
 
   OpenPictureDialog1.Filter := 'JPEG Image|*.jpg;*.jpeg';
@@ -261,75 +257,16 @@ begin
   begin
     qrOS_Temp.Close;
     qrOS_Temp.SQL.Clear;
-    qrOS_Temp.SQL.Add('select os.*, c.*, e.nome as empresa, s.nome as secretaria from os ');
-    qrOS_Temp.SQL.Add('inner join carro c on os.id_carro = c.id ');
-    qrOS_Temp.SQL.Add('inner join secretaria s on c.id_secretaria = s.id ');
-    qrOS_Temp.SQL.Add('inner join empresa e on os.id_empresa = e.id ');
-    qrOS_Temp.SQL.Add('where os.id = :id ');
+    qrOS_Temp.SQL.Add('select * from os where id = :id');
     qrOS_Temp.Params.ParamByName('id').Value := idOS;
     qrOS_Temp.Open;
 
     idCarro := qrOS_Temp.FieldByName('id_carro').AsInteger;
-    placa := qrOS_Temp.FieldByName('placa').AsString;
-    edtVeiculo.Text := placa;
+
     dt1.Date := qrOS_Temp.FieldByName('data').AsDateTime;
     edtResponsavel.Text := qrOS_Temp.FieldByName('responsavel').AsString;
     memoServico.Lines.Add(qrOS_Temp.FieldByName('servico').AsString);
     edtTotal.Text := qrOS_Temp.FieldByName('valor').AsString;
-
-    for i := 0 to cbbEmpresa.Items.Count - 1 do
-    begin
-      if Pos(qrOS_Temp.FieldByName('empresa').AsString, cbbEmpresa.Items[i]) > 0 then
-      begin
-        cbbEmpresa.ItemIndex := i;
-        Break;
-      end;
-    end;
-
-
-    if TBlobField(qrOS_Temp.FieldByName('img1')).BlobSize > 0 then
-    begin
-      Stm := TMemoryStream.Create;
-      Jpg := TJpegImage.Create;
-    try
-      TBlobField(qrOS_Temp.FieldByName('img1')).SaveToStream(Stm);
-      Stm.Position := 0;
-      Jpg.LoadFromStream(Stm);
-      try
-        img1.Picture.Assign(Jpg);
-      except
-        img1.Picture.Assign(nil);
-      end;
-    finally
-      Stm.Free;
-      Jpg.Free;
-    end;
-    end
-    else
-      img1.Picture.Assign(nil);
-
-
-//IMAGEM 2
-    if TBlobField(qrOS_Temp.FieldByName('foto2')).BlobSize > 0 then
-    begin
-      Stm := TMemoryStream.Create;
-      Jpg := TJpegImage.Create;
-    try
-      TBlobField(qrOS_Temp.FieldByName('foto2')).SaveToStream(Stm);
-      Stm.Position := 0;
-      Jpg.LoadFromStream(Stm);
-      try
-        img2.Picture.Assign(Jpg);
-      except
-        img2.Picture.Assign(nil);
-      end;
-    finally
-      Stm.Free;
-      Jpg.Free;
-    end;
-    end
-    else
-      img2.Picture.Assign(nil);
   end;
 end;
 

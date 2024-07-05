@@ -235,7 +235,6 @@ procedure TfrmNovaOS.FormShow(Sender: TObject);
 var
   Stm: TStream;
   Jpg: TJPEGImage;
-  i : Integer;
 begin
 
   OpenPictureDialog1.Filter := 'JPEG Image|*.jpg;*.jpeg';

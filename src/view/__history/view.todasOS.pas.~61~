@@ -152,7 +152,7 @@ begin
 
     frmNovaOS := TfrmNovaOS.create(self);
     frmNovaOS.tipo := 'update';
-    frmNovaOS.idOS := StrToInt(id);
+    frmNovaOS.idOS := id;
     frmNovaOS.showModal;
 
     moduloConn.conexao.commit;
