@@ -61,7 +61,6 @@ begin
   if cbbRel.Text = 'RELATÓRIO SINTÉTICO' then
   begin
 
-
     if cbbGrupo.Text = 'TODOS' then
     begin
        grupo := '';
@@ -165,7 +164,6 @@ begin
       placa := '';
 
     periodo := ' where os.data between :dt1 and :dt2';
-
 
     frxrprt1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'rel\rel003.fr3');
 

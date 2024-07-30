@@ -185,7 +185,7 @@ object frmRel: TfrmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45461.895130115700000000
-    ReportOptions.LastChange = 45503.663269340280000000
+    ReportOptions.LastChange = 45477.756179097220000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -195,8 +195,8 @@ object frmRel: TfrmRel
     Top = 104
     Datasets = <
       item
-        DataSet = frxGrupCarro
-        DataSetName = 'frxGrupCarro'
+        DataSet = frxSintetico
+        DataSetName = 'frxSintetico'
       end>
     Variables = <>
     Style = <>
@@ -46549,10 +46549,26 @@ object frmRel: TfrmRel
           Color = clBlack
           Frame.Typ = [ftTop]
         end
-        object Memo3: TfrxMemoView
-          Left = 7.559060000000000000
-          Top = 120.944960000000000000
+        object Memo2: TfrxMemoView
+          Align = baLeft
+          Top = 120.944966610000000000
           Width = 60.472482310000000000
+          Height = 15.118107800000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Data')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo3: TfrxMemoView
+          Left = 68.031540000000000000
+          Top = 120.944960000000000000
+          Width = 45.354362310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -46565,10 +46581,26 @@ object frmRel: TfrmRel
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo6: TfrxMemoView
-          Left = 79.370130000000000000
+        object Memo5: TfrxMemoView
+          Left = 525.354670000000000000
           Top = 120.944960000000000000
-          Width = 196.535562310000000000
+          Width = 102.047312310000000000
+          Height = 15.118107800000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Respons'#225'vel')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo6: TfrxMemoView
+          Left = 132.283550000000000000
+          Top = 120.944960000000000000
+          Width = 71.811072310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -46582,9 +46614,9 @@ object frmRel: TfrmRel
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
-          Left = 585.827150000000000000
+          Left = 631.181510000000000000
           Top = 120.944960000000000000
-          Width = 128.504022310000000000
+          Width = 83.149662310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -46593,7 +46625,7 @@ object frmRel: TfrmRel
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Total de Servi'#231'os')
+            'Valor')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -46614,25 +46646,10 @@ object frmRel: TfrmRel
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo4: TfrxMemoView
-          Left = 275.905690000000000000
-          Top = 120.944960000000000000
-          Width = 222.992272310000000000
-          Height = 15.118107800000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'Secretaria')
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object Memo1: TfrxMemoView
-          Left = 506.457020000000000000
+          Left = 207.874150000000000000
           Top = 120.944960000000000000
-          Width = 68.031542310000000000
+          Width = 151.181202310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -46641,58 +46658,105 @@ object frmRel: TfrmRel
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Qtde Serv.')
+            'Tipo')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo4: TfrxMemoView
+          Left = 362.834880000000000000
+          Top = 120.944960000000000000
+          Width = 158.740262310000000000
+          Height = 15.118107800000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Empresa')
           ParentFont = False
           VAlign = vaCenter
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
-        Height = 22.677180000000000000
+        Height = 90.708720000000000000
         Top = 226.771800000000000000
         Width = 718.110700000000000000
-        DataSet = frxGrupCarro
-        DataSetName = 'frxGrupCarro'
+        DataSet = frxSintetico
+        DataSetName = 'frxSintetico'
         RowCount = 0
-        object frxDBDataset1PLACA: TfrxMemoView
-          Left = 7.559060000000000000
+        object frxDBDataset1DATA: TfrxMemoView
           Width = 60.472480000000000000
-          Height = 15.118110240000000000
-          DataField = 'PLACA'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          Height = 15.118110236220470000
+          DataField = 'DATA'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxGrupCarro."PLACA"]')
+            '[frxSintetico."DATA"]')
+          ParentFont = False
+        end
+        object frxDBDataset1PLACA: TfrxMemoView
+          Left = 64.252010000000000000
+          Width = 60.472480000000000000
+          Height = 15.118110236220470000
+          DataField = 'PLACA'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxSintetico."PLACA"]')
           ParentFont = False
         end
         object frxDBDataset1MODELO: TfrxMemoView
-          Left = 79.370130000000000000
-          Width = 196.535560000000000000
+          Left = 124.724490000000000000
+          Width = 79.370130000000000000
           Height = 15.118110240000000000
           DataField = 'MODELO'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxGrupCarro."MODELO"]')
+            '[frxSintetico."MODELO"]')
+          ParentFont = False
+        end
+        object frxDBDataset1RESPONSAVEL: TfrxMemoView
+          Left = 529.134200000000000000
+          Width = 102.047310000000000000
+          Height = 15.118110240000000000
+          DataField = 'RESPONSAVEL'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxSintetico."RESPONSAVEL"]')
           ParentFont = False
         end
         object frxDBDataset1VALOR: TfrxMemoView
-          Left = 585.827150000000000000
-          Width = 128.504020000000000000
-          Height = 15.118110240000000000
-          DataField = 'TOTAL_SERVICOS'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          Left = 634.961040000000000000
+          Width = 79.370130000000000000
+          Height = 15.118110236220470000
+          DataField = 'VALOR'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -46703,58 +46767,73 @@ object frmRel: TfrmRel
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxGrupCarro."TOTAL_SERVICOS"]')
+            '[frxSintetico."VALOR"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo12: TfrxMemoView
+          Left = 207.874150000000000000
+          Width = 151.181202310000000000
+          Height = 15.118110240000000000
+          DataField = 'TIPO'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxSintetico."TIPO"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
-          Left = 275.905690000000000000
-          Width = 222.992272310000000000
+          Left = 362.834880000000000000
+          Width = 158.740262310000000000
           Height = 15.118110240000000000
-          DataField = 'SECRETARIA'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          DataField = 'EMPRESA'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxSintetico."EMPRESA"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo14: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 18.897650000000000000
+          Width = 714.331170000000000000
+          Height = 64.252010000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxGrupCarro."SECRETARIA"]')
+            '[frxSintetico."SERVICO"]')
           ParentFont = False
-          VAlign = vaCenter
         end
         object Line3: TfrxLineView
           Align = baWidth
-          Top = 18.897650000000000000
+          Top = 86.929189999999970000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Style = fsDot
           Frame.Typ = [ftTop]
         end
-        object Memo2: TfrxMemoView
-          Left = 498.897960000000000000
-          Width = 71.811072310000000000
-          Height = 15.118107800000000000
-          DataField = 'QUANTIDADE_SERVICOS'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxGrupCarro."QUANTIDADE_SERVICOS"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 355.275820000000000000
+        Top = 423.307360000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
           Left = 608.504333500000000000
@@ -46776,7 +46855,7 @@ object frmRel: TfrmRel
       object Footer1: TfrxFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 272.126160000000000000
+        Top = 340.157700000000000000
         Width = 718.110700000000000000
         object Memo9: TfrxMemoView
           Left = 506.457031250000000000
@@ -46809,7 +46888,7 @@ object frmRel: TfrmRel
           Font.Style = [fsBold]
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxGrupCarro."TOTAL_SERVICOS">,MasterData1)]')
+            '[SUM(<frxSintetico."VALOR">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -46856,47 +46935,5 @@ object frmRel: TfrmRel
       'inner join empresa e on os.id_empresa = e.id')
     Left = 272
     Top = 104
-  end
-  object frxGrupCarro: TfrxDBDataset
-    UserName = 'frxGrupCarro'
-    CloseDataSource = False
-    FieldAliases.Strings = (
-      'CARRO_ID=CARRO_ID'
-      'PLACA=PLACA'
-      'MODELO=MODELO'
-      'SECRETARIA=SECRETARIA'
-      'TOTAL_SERVICOS=TOTAL_SERVICOS'
-      'QUANTIDADE_SERVICOS=QUANTIDADE_SERVICOS')
-    DataSet = qrGCarro
-    BCDToCurrency = False
-    Left = 328
-    Top = 144
-  end
-  object qrGCarro: TFDQuery
-    Connection = moduloConn.conexao
-    SQL.Strings = (
-      
-        'SELECT c.id AS carro_id, C.PLACA AS PLACA, c.modelo AS MODELO, s' +
-        '.nome SECRETARIA, SUM(os.valor) AS total_servicos, COUNT(os.id) ' +
-        'AS quantidade_servicos FROM os'
-      'INNER JOIN carro c ON os.id_carro = c.id'
-      'INNER JOIN secretaria s ON c.id_secretaria = s.id'
-      'INNER JOIN empresa e ON os.id_empresa = e.id'
-      'WHERE os.data BETWEEN :data_inicio AND :data_fim'
-      'GROUP BY c.id, c.modelo, c.placa, s.nome'
-      'ORDER BY total_servicos DESC')
-    Left = 272
-    Top = 44
-    ParamData = <
-      item
-        Name = 'DATA_INICIO'
-        DataType = ftDate
-        ParamType = ptInput
-      end
-      item
-        Name = 'DATA_FIM'
-        DataType = ftDate
-        ParamType = ptInput
-      end>
   end
 end

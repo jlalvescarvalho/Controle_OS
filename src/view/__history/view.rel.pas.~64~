@@ -61,6 +61,8 @@ begin
   if cbbRel.Text = 'RELATÓRIO SINTÉTICO' then
   begin
 
+    cbbEmpresa.Enabled := True;
+    cbbTipo.Enabled := True;
 
     if cbbGrupo.Text = 'TODOS' then
     begin
@@ -105,6 +107,8 @@ begin
   end
   else if cbbRel.Text = 'RELATÓRIO ANALÍTICO' then
   begin
+    cbbEmpresa.Enabled := True;
+    cbbTipo.Enabled := True;
 
 
     if cbbGrupo.Text = 'TODOS' then
@@ -149,6 +153,8 @@ begin
   end
   else if cbbRel.Text = 'RELATÓRIO AGRUPADO PLACA' then
   begin
+    cbbEmpresa.Visible := False;
+    cbbTipo.Visible := False;
 
     if cbbGrupo.Text = 'TODOS' then
     begin

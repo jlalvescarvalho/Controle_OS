@@ -78,7 +78,7 @@ begin
 
     frmNewCarro := TfrmNewCarro.Create(self);
     frmNewCarro.tipo := 'update';
-    frmNewCarro.id := StrToInt(id);
+    frmNewCarro.id := id;
     frmNewCarro.Show;
 
     FormShow(self);

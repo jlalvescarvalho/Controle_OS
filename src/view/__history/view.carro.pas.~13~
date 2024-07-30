@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Menus;
+  Vcl.DBGrids, Vcl.StdCtrls;
 
 type
   TfrmCarro = class(TForm)
@@ -16,12 +16,9 @@ type
     Panel2: TPanel;
     Label1: TLabel;
     lblNreg: TLabel;
-    pm1: TPopupMenu;
-    E1: TMenuItem;
     procedure btNovoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure E1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,7 +37,6 @@ uses modulo, view.CadastrarCarro;
 procedure TfrmCarro.btNovoClick(Sender: TObject);
 begin
   frmNewCarro := TfrmNewCarro.Create(self);
-  frmNewCarro.tipo := 'insert';
   frmNewCarro.Show;
 
   FormShow(self);
@@ -65,24 +61,6 @@ begin
 
       FormShow(self);
     end;
-  end;
-end;
-
-procedure TfrmCarro.E1Click(Sender: TObject);
-var
-  id: string;
-begin
-  if not (DBGrid1.DataSource.DataSet.Bof and DBGrid1.DataSource.DataSet.Eof) then
-  begin
-    id := DBGrid1.DataSource.DataSet.FieldByName('ID').AsString;
-
-    frmNewCarro := TfrmNewCarro.Create(self);
-    frmNewCarro.tipo := 'update';
-    frmNewCarro.id := StrToInt(id);
-    frmNewCarro.Show;
-
-    FormShow(self);
-
   end;
 end;
 

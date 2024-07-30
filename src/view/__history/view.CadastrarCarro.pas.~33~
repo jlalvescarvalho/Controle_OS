@@ -108,7 +108,7 @@ begin
   begin
       qrtemp.Close;
       qrtemp.SQL.Clear;
-      qrtemp.SQL.Add('select c.*, s.id as secId, s.nome as secNome from carro c inner join secretaria s on c.id_secretaria = s.id where c.id = :id');
+      qrtemp.SQL.Add('select c.*, s.id secId, s.secNome from carro c inner join secretaria s on c.id_secretaria = s.id where c.id = :id');
       qrtemp.Params.ParamByName('id').Value := id;
       qrtemp.Open;
 

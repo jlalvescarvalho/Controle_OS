@@ -61,7 +61,6 @@ begin
   if cbbRel.Text = 'RELATÓRIO SINTÉTICO' then
   begin
 
-
     if cbbGrupo.Text = 'TODOS' then
     begin
        grupo := '';
@@ -164,8 +163,17 @@ begin
     else
       placa := '';
 
-    periodo := ' where os.data between :dt1 and :dt2';
+    if cbbTipo.Text = 'TODOS' then
+       tipo := ''
+    else
+      tipo :=  ' and c.tipo = '+QuotedStr(cbbTipo.Text);
 
+    if cbbEmpresa.Text = 'TODOS' then
+       empresa := ''
+    else
+      empresa :=  ' and e.nome = '+QuotedStr(cbbEmpresa.Text);
+
+    periodo := ' where os.data between :dt1 and :dt2';
 
     frxrprt1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'rel\rel003.fr3');
 
@@ -174,7 +182,7 @@ begin
     qrGCarro.SQL.Add('SELECT c.id AS carro_id, C.PLACA AS PLACA, c.modelo AS MODELO, s.nome SECRETARIA, SUM(os.valor) AS total_servicos, COUNT(os.id) AS quantidade_servicos FROM os ');
     qrGCarro.SQL.Add(' INNER JOIN carro c ON os.id_carro = c.id ');
     qrGCarro.SQL.Add(' INNER JOIN secretaria s ON c.id_secretaria = s.id ');
-    qrGCarro.SQL.Add(' INNER JOIN empresa e ON os.id_empresa = e.id '+periodo+placa+grupo);
+    qrGCarro.SQL.Add(' INNER JOIN empresa e ON os.id_empresa = e.id '+periodo);
     qrGCarro.SQL.Add(' GROUP BY c.id, c.modelo, c.placa, s.nome ');
     qrGCarro.SQL.Add(' ORDER BY total_servicos DESC ');
     qrGCarro.Params.ParamByName('dt1').AsDateTime := dt1.Date;

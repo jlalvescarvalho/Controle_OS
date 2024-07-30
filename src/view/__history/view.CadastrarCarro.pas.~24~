@@ -90,8 +90,6 @@ begin
 end;
 
 procedure TfrmNewCarro.FormShow(Sender: TObject);
-var
-  i : Integer;
 begin
   moduloConn.qrSecretaria.Close;
   moduloConn.qrSecretaria.SQL.Clear;
@@ -106,45 +104,15 @@ begin
 
   if tipo = 'update' then
   begin
-      qrtemp.Close;
-      qrtemp.SQL.Clear;
-      qrtemp.SQL.Add('select c.*, s.id as secId, s.nome as secNome from carro c inner join secretaria s on c.id_secretaria = s.id where c.id = :id');
-      qrtemp.Params.ParamByName('id').Value := id;
-      qrtemp.Open;
-
-     edtPlaca.Text := qrtemp.FieldByName('placa').AsString;
-     edtModelo.Text := qrtemp.FieldByName('modelo').AsString;
-     cbbCombustivel.Text := qrtemp.FieldByName('combustivel').AsString;
-
-      for i := 0 to cbbCombustivel.Items.Count - 1 do
-      begin
-        if Pos(qrtemp.FieldByName('combustivel').AsString, cbbCombustivel.Items[i]) > 0 then
-        begin
-          cbbCombustivel.ItemIndex := i;
-          Break;
-        end;
-      end;
 
 
-      for i := 0 to cbbSecretaria.Items.Count - 1 do
-      begin
-        if Pos(qrtemp.FieldByName('secId').AsString +' | '+qrtemp.FieldByName('secNome').AsString, cbbSecretaria.Items[i]) > 0 then
-        begin
-          cbbSecretaria.ItemIndex := i;
-          Break;
-        end;
-      end;
-     edtMotorista.Text := qrtemp.FieldByName('motorista').AsString;
-     memoObs.Text := qrtemp.FieldByName('obs').AsString;
-
-     for i := 0 to cbbTipo.Items.Count - 1 do
-      begin
-        if Pos(qrtemp.FieldByName('tipo').AsString, cbbTipo.Items[i]) > 0 then
-        begin
-          cbbTipo.ItemIndex := i;
-          Break;
-        end;
-      end;
+     edtPlaca.Text := ;
+     edtModelo.Text;
+     cbbCombustivel.Text;
+     StrToInt(Trim(GetFirstPart(cbbSecretaria.Text, '|')));
+     edtMotorista.Text;
+     memoObs.Text;
+     cbbTipo.Text;
   end;
 
 end;

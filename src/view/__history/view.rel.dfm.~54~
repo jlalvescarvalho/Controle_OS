@@ -185,7 +185,7 @@ object frmRel: TfrmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45461.895130115700000000
-    ReportOptions.LastChange = 45503.663269340280000000
+    ReportOptions.LastChange = 45503.657607129630000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -195,8 +195,8 @@ object frmRel: TfrmRel
     Top = 104
     Datasets = <
       item
-        DataSet = frxGrupCarro
-        DataSetName = 'frxGrupCarro'
+        DataSet = frxSintetico
+        DataSetName = 'frxSintetico'
       end>
     Variables = <>
     Style = <>
@@ -46552,7 +46552,7 @@ object frmRel: TfrmRel
         object Memo3: TfrxMemoView
           Left = 7.559060000000000000
           Top = 120.944960000000000000
-          Width = 60.472482310000000000
+          Width = 45.354362310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -46568,7 +46568,7 @@ object frmRel: TfrmRel
         object Memo6: TfrxMemoView
           Left = 79.370130000000000000
           Top = 120.944960000000000000
-          Width = 196.535562310000000000
+          Width = 71.811072310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -46615,24 +46615,25 @@ object frmRel: TfrmRel
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
-          Left = 275.905690000000000000
+          Left = 321.260050000000000000
           Top = 120.944960000000000000
-          Width = 222.992272310000000000
+          Width = 158.740262310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          HAlign = haCenter
           Memo.UTF8W = (
             'Secretaria')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
-          Left = 506.457020000000000000
+          Left = 502.677490000000000000
           Top = 120.944960000000000000
-          Width = 68.031542310000000000
+          Width = 71.811072310000000000
           Height = 15.118107800000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -46651,48 +46652,48 @@ object frmRel: TfrmRel
         Height = 22.677180000000000000
         Top = 226.771800000000000000
         Width = 718.110700000000000000
-        DataSet = frxGrupCarro
-        DataSetName = 'frxGrupCarro'
+        DataSet = frxSintetico
+        DataSetName = 'frxSintetico'
         RowCount = 0
         object frxDBDataset1PLACA: TfrxMemoView
           Left = 7.559060000000000000
           Width = 60.472480000000000000
           Height = 15.118110240000000000
           DataField = 'PLACA'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxGrupCarro."PLACA"]')
+            '[frxSintetico."PLACA"]')
           ParentFont = False
         end
         object frxDBDataset1MODELO: TfrxMemoView
           Left = 79.370130000000000000
-          Width = 196.535560000000000000
+          Width = 207.874150000000000000
           Height = 15.118110240000000000
           DataField = 'MODELO'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
-            '[frxGrupCarro."MODELO"]')
+            '[frxSintetico."MODELO"]')
           ParentFont = False
         end
         object frxDBDataset1VALOR: TfrxMemoView
           Left = 585.827150000000000000
           Width = 128.504020000000000000
           Height = 15.118110240000000000
-          DataField = 'TOTAL_SERVICOS'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          DataField = 'VALOR'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
@@ -46703,24 +46704,25 @@ object frmRel: TfrmRel
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxGrupCarro."TOTAL_SERVICOS"]')
+            '[frxSintetico."VALOR"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
-          Left = 275.905690000000000000
-          Width = 222.992272310000000000
+          Left = 321.260050000000000000
+          Width = 158.740262310000000000
           Height = 15.118110240000000000
-          DataField = 'SECRETARIA'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
+          DataField = 'EMPRESA'
+          DataSet = frxSintetico
+          DataSetName = 'frxSintetico'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          HAlign = haCenter
           Memo.UTF8W = (
-            '[frxGrupCarro."SECRETARIA"]')
+            '[frxSintetico."EMPRESA"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -46736,9 +46738,6 @@ object frmRel: TfrmRel
           Left = 498.897960000000000000
           Width = 71.811072310000000000
           Height = 15.118107800000000000
-          DataField = 'QUANTIDADE_SERVICOS'
-          DataSet = frxGrupCarro
-          DataSetName = 'frxGrupCarro'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -46746,7 +46745,7 @@ object frmRel: TfrmRel
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxGrupCarro."QUANTIDADE_SERVICOS"]')
+            'Qtde Serv.')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -46809,7 +46808,7 @@ object frmRel: TfrmRel
           Font.Style = [fsBold]
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxGrupCarro."TOTAL_SERVICOS">,MasterData1)]')
+            '[SUM(<frxSintetico."VALOR">,MasterData1)]')
           ParentFont = False
           VAlign = vaCenter
         end

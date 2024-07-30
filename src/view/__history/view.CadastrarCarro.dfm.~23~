@@ -222,9 +222,4 @@ object frmNewCarro: TfrmNewCarro
       'TRANSPORTE LOCADO'
       'COMODATO')
   end
-  object qrtemp: TFDQuery
-    Connection = moduloConn.conexao
-    Left = 504
-    Top = 80
-  end
 end

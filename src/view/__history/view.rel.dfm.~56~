@@ -185,7 +185,7 @@ object frmRel: TfrmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45461.895130115700000000
-    ReportOptions.LastChange = 45503.663269340280000000
+    ReportOptions.LastChange = 45503.662082951390000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -46624,6 +46624,7 @@ object frmRel: TfrmRel
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          HAlign = haCenter
           Memo.UTF8W = (
             'Secretaria')
           ParentFont = False
@@ -46719,6 +46720,7 @@ object frmRel: TfrmRel
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          HAlign = haCenter
           Memo.UTF8W = (
             '[frxGrupCarro."SECRETARIA"]')
           ParentFont = False

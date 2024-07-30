@@ -32,8 +32,6 @@ type
     lbl4: TLabel;
     lbl5: TLabel;
     cbbEmpresa: TComboBox;
-    frxGrupCarro: TfrxDBDataset;
-    qrGCarro: TFDQuery;
     procedure AdvSmoothButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cbbCarroSelect(Sender: TObject);
@@ -60,7 +58,6 @@ begin
 
   if cbbRel.Text = 'RELATÓRIO SINTÉTICO' then
   begin
-
 
     if cbbGrupo.Text = 'TODOS' then
     begin
@@ -146,45 +143,7 @@ begin
     qrRel.Open;
 
     frxrprt1.ShowReport;
-  end
-  else if cbbRel.Text = 'RELATÓRIO AGRUPADO PLACA' then
-  begin
-
-    if cbbGrupo.Text = 'TODOS' then
-    begin
-       grupo := '';
-    end
-    else
-    begin
-      grupo := ' and s.nome ='+ QuotedStr(cbbGrupo.Text);
-    end;
-
-    if cbbCarro.Text <> 'TODOS' then
-      placa := ' and c.placa = '+QuotedStr(cbbCarro.Text)
-    else
-      placa := '';
-
-    periodo := ' where os.data between :dt1 and :dt2';
-
-
-    frxrprt1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'rel\rel003.fr3');
-
-    qrGCarro.Close;
-    qrGCarro.SQL.Clear;
-    qrGCarro.SQL.Add('SELECT c.id AS carro_id, C.PLACA AS PLACA, c.modelo AS MODELO, s.nome SECRETARIA, SUM(os.valor) AS total_servicos, COUNT(os.id) AS quantidade_servicos FROM os ');
-    qrGCarro.SQL.Add(' INNER JOIN carro c ON os.id_carro = c.id ');
-    qrGCarro.SQL.Add(' INNER JOIN secretaria s ON c.id_secretaria = s.id ');
-    qrGCarro.SQL.Add(' INNER JOIN empresa e ON os.id_empresa = e.id '+periodo+placa+grupo);
-    qrGCarro.SQL.Add(' GROUP BY c.id, c.modelo, c.placa, s.nome ');
-    qrGCarro.SQL.Add(' ORDER BY total_servicos DESC ');
-    qrGCarro.Params.ParamByName('dt1').AsDateTime := dt1.Date;
-    qrGCarro.Params.ParamByName('dt2').AsDateTime := dt2.Date;
-    qrGCarro.Open;
-
-    frxrprt1.ShowReport;
-
-  end
-
+  end;
 
 
 end;

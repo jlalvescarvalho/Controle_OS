@@ -108,7 +108,7 @@ begin
   begin
       qrtemp.Close;
       qrtemp.SQL.Clear;
-      qrtemp.SQL.Add('select c.*, s.id as secId, s.nome as secNome from carro c inner join secretaria s on c.id_secretaria = s.id where c.id = :id');
+      qrtemp.SQL.Add('select * from carro c inner join secretaria s on c.id_secretaria = s.id where c.id = :id');
       qrtemp.Params.ParamByName('id').Value := id;
       qrtemp.Open;
 
@@ -128,7 +128,7 @@ begin
 
       for i := 0 to cbbSecretaria.Items.Count - 1 do
       begin
-        if Pos(qrtemp.FieldByName('secId').AsString +' | '+qrtemp.FieldByName('secNome').AsString, cbbSecretaria.Items[i]) > 0 then
+        if Pos(qrtemp.FieldByName('id1').AsString +' | '+qrtemp.FieldByName('nome').AsString, cbbSecretaria.Items[i]) > 0 then
         begin
           cbbSecretaria.ItemIndex := i;
           Break;

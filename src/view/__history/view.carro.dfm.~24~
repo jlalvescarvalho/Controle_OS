@@ -145,7 +145,6 @@ object frmCarro: TfrmCarro
     Top = 232
     object E1: TMenuItem
       Caption = 'Editar'
-      OnClick = E1Click
     end
   end
 end

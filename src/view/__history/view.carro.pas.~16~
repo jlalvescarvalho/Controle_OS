@@ -40,7 +40,6 @@ uses modulo, view.CadastrarCarro;
 procedure TfrmCarro.btNovoClick(Sender: TObject);
 begin
   frmNewCarro := TfrmNewCarro.Create(self);
-  frmNewCarro.tipo := 'insert';
   frmNewCarro.Show;
 
   FormShow(self);
@@ -76,12 +75,7 @@ begin
   begin
     id := DBGrid1.DataSource.DataSet.FieldByName('ID').AsString;
 
-    frmNewCarro := TfrmNewCarro.Create(self);
-    frmNewCarro.tipo := 'update';
-    frmNewCarro.id := StrToInt(id);
-    frmNewCarro.Show;
 
-    FormShow(self);
 
   end;
 end;
